@@ -2,7 +2,7 @@
 
 int main()
 {
-   exerciseThirteen();
+   exerciseFourteen();
 
    return 0;
 }
@@ -212,6 +212,46 @@ int exerciseThirteen() {
     number -= 1;
   }
   printf("Su factorial es: %.2f", factorial);
+
+  return 0;
+}
+
+// Ex 14: The patients with symphtoms of an illness are inserted into the hospital if
+// if they have a value greater than 0.6 in the medition of an index, and they go through
+// a surgery if the value is greater than 0.9. Write a program that reads from the keyboard 
+// the number of patients followed by their age and the index of each patient, and calculate
+// the age average of inserted patients, analyzed patients and those who went through the
+// surgery.
+
+int exerciseFourteen() {
+  int patients, patientsInserted = 0, patientsOfSurgery = 0, i = 0, name, age, indexNumber;
+  double ageAverageOfAll = 0.0, ageAverageOfInserted = 0.0, ageAverageOfSurgery = 0.0;
+  printf("Por favor, ingrese la cantidad de pacientes: ");
+  scanf("%d", &patients);
+
+  while (i < patients) {
+    printf("\nPor favor, ingrese el nombre del paciente: ");
+    scanf("%d", &name);
+    printf("\nSu edad: ");
+    scanf("%d", &age);
+    printf("\nY el numero de su indice: ");
+    scanf("%d", &indexNumber);
+
+    ageAverageOfAll += age;
+
+    if (indexNumber >= 0.6) {
+      ageAverageOfInserted += age;
+      patientsInserted += 1;
+    }
+    if (indexNumber >= 0.9) {
+      ageAverageOfSurgery += age;
+      patientsOfSurgery += 1;
+    }
+  i += 1;
+  }
+  printf("The average age of all the patients is: %d\n", (ageAverageOfAll/patients));
+  printf("The average age of patients who were inserted is: %d\n", (ageAverageOfInserted/patientsInserted));
+  printf("The average age of patients who were to surgery is: %d\n", (ageAverageOfSurgery/patientsOfSurgery));
 
   return 0;
 }
