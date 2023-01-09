@@ -2,7 +2,7 @@
 
 int main()
 {
-   exerciseFourteen();
+   exerciseFifteen();
 
    return 0;
 }
@@ -252,6 +252,71 @@ int exerciseFourteen() {
   printf("The average age of all the patients is: %d\n", (ageAverageOfAll/patients));
   printf("The average age of patients who were inserted is: %d\n", (ageAverageOfInserted/patientsInserted));
   printf("The average age of patients who were to surgery is: %d\n", (ageAverageOfSurgery/patientsOfSurgery));
+
+  return 0;
+}
+
+// Part 4: Functions
+// Ex 15: Write a function max that takes two integers as parameters and returns the max between those.
+// Use that function to calculate the max between four integers asked to the user.
+
+int maxFunction(int a, int b) {
+
+  if (a > b) {
+    return a;
+  }
+  else if (b > a) {
+    return b;
+  }
+  else {
+    return a;
+  }
+}
+
+int exerciseFifteen() {
+  int firstNumber, secondNumber, thirdNumber, fourthNumber;
+  char askingForNumber[30] = "Por favor, ingrese un numero: ", tellingNumber[20] = "El mayor numero es";
+
+  printf("%s", askingForNumber);
+  scanf("%d", &firstNumber);
+  printf("%s", askingForNumber);
+  scanf("%d", &secondNumber);
+  printf("%s", askingForNumber);
+  scanf("%d", &thirdNumber);
+  printf("%s", askingForNumber);
+  scanf("%d", &fourthNumber);
+
+  if (maxFunction(firstNumber, secondNumber) == firstNumber) {
+    if (maxFunction(firstNumber, thirdNumber) == firstNumber) {
+      if (maxFunction(firstNumber, fourthNumber) == firstNumber) {
+        printf("%s %d", tellingNumber, firstNumber);
+      } else {
+        printf("%s %d", tellingNumber, fourthNumber);
+      }
+    } else {
+      if (maxFunction(thirdNumber, fourthNumber) == thirdNumber) {
+        printf("%s %d", tellingNumber, thirdNumber);
+      } else {
+        printf("%s %d", tellingNumber, fourthNumber);
+      }
+    }
+  } else {
+    if (maxFunction(secondNumber, thirdNumber) == secondNumber) {
+      if (maxFunction(secondNumber, fourthNumber) == secondNumber) {
+        printf("%s %d", tellingNumber, secondNumber);
+      } else {
+        printf("%s %d", tellingNumber, fourthNumber);
+      }
+    } else {
+      if (maxFunction(thirdNumber, fourthNumber) == thirdNumber) {
+        printf("%s %d", tellingNumber, thirdNumber);
+      } else {
+        printf("%s %d", tellingNumber, fourthNumber);
+      }
+    }
+  }
+  
+
 
   return 0;
 }
