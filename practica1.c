@@ -2,7 +2,7 @@
 
 int main()
 {
-   exerciseFifteen();
+   esRectangulo(3, 4, 5);
 
    return 0;
 }
@@ -315,8 +315,59 @@ int exerciseFifteen() {
       }
     }
   }
-  
-
 
   return 0;
+}
+
+// Ex 16:Three positive numbers can be the measure of a triangule's side iif the max number is less than the sum of the other two.
+// Write a function 'ladosTriangulo' that returns 1 if the three numbers given prove that condition, and 0 if otherwise.
+
+int ladosTriangulo(int firstSide, int secondSide, int thirdSide) {
+
+ if (firstSide > secondSide && firstSide > thirdSide) {
+  if (firstSide < (secondSide + thirdSide)) {
+    return 1;
+  } else {
+    return 0;
+  }
+ } else if (secondSide > firstSide && secondSide > thirdSide) {
+  if (secondSide < (firstSide + thirdSide)) {
+    return 1;
+  } else {
+    return 0;
+  }
+ } else if (thirdSide > firstSide && thirdSide > secondSide) {
+  if (thirdSide < (secondSide + firstSide)) {
+    return 1;
+  } else {
+    return 0;
+  }
+ } else {
+  return 0;
+ }
+}
+
+// Ex 17: Define a function 'esRectangulo' that takes three integers and return 1 if the given numbers can be sides of a right triangle, and 0 if otherwise.
+// Sugestion: a way would be to use Pythagoras.
+
+int esRectangulo(int firstSide, int secondSide, int thirdSide) {
+
+  if (ladosTriangulo(firstSide, secondSide, thirdSide) == 1) {
+    if ((firstSide^2) == ((secondSide^2) + (thirdSide^2))) {
+      printf("Es un triangulo rectangulo.");
+      return 1;
+    } else if ((secondSide^2) == ((thirdSide^2) + (firstSide^2))) {
+      printf("Es un triangulo rectangulo.");
+      return 1;
+    } else if ((thirdSide^2) == ((secondSide^2) + (firstSide^2))) {
+      printf("Es un triangulo rectangulo.");
+      return 1;
+    } else {
+      printf("No es un triangulo rectangulo.");
+      return 0;
+    }
+  } else {
+    printf("No se puede crear un triangulo");
+    return 0;
+  }
 }
