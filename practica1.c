@@ -2,7 +2,7 @@
 
 int main()
 {
-   esRectangulo(3, 4, 5);
+   exerciseNineteen();
 
    return 0;
 }
@@ -370,4 +370,84 @@ int esRectangulo(int firstSide, int secondSide, int thirdSide) {
     printf("No se puede crear un triangulo");
     return 0;
   }
+}
+
+// Ex 18: The date of easter sunday corresponds to the first sunday after the first
+// full moon that follows the equinox of spring. Given a year, the calculations 
+// that permits you to know the date are:
+// A = year % 19
+// B = year % 4
+// C = year % 7
+// D = (19 * A + 24) % 30
+// E = (2 * B + 4 * C + 6 * D + 5) % 7
+// N = (22 + D + E)
+// Where N indicates the number of the day of march (or april if N > 31) corresponding to the
+// easter day. Write a program that reads a year and shows the day and month where it was or it
+// was or it will be celebrated easter day that year. Use a function where it gets as a parameter 
+// the year and returns the value of N. The main program makes the rest of the process.
+
+int getDayOfEaster(int year) {
+  int A, B, C, D, E, N;
+
+  A = year % 19;
+  B = year % 4;
+  C = year % 7;
+  D = (19 * A + 24) % 30;
+  E = (2 * B + 4 * C + 6 * D + 5) % 7;
+  N = (22 + D + E);
+
+  return N;
+}
+
+int exerciseEighteen() {
+  int day, year;
+
+  printf("Por favor, ingresar un año para calcular el dia de Pascua: ");
+  scanf("%d", &year);
+
+  day = getDayOfEaster(year);
+
+  if (day > 0 && day <= 31) {
+    printf("El dia de Pascua fue/va a ser el dia %d del mes de Marzo.", day);
+  } else {
+    printf("El dia de Pascua fue/va a ser el dia %d del mes de Abril.", (day - 31));
+  }
+  
+  return 0;
+}
+
+// Ex 19: Write a recursive function that takes an integer and returns the corresponding value
+// of the fibonacci sequence.
+
+  int recursiveFibo(int number) {
+    if (number == 1) {
+      return 0;
+    } else if (number == 2) {
+      return 1;
+    }
+
+    return recursiveFibo(number - 1) + recursiveFibo(number - 2);
+  }
+
+int exerciseNineteen(){
+  int number, quantity;
+
+  printf("Por favor, ingrese la cantidad de numeros a mostrar: ");
+  scanf("%d",&quantity);
+  
+  if (quantity == 1) {
+    printf("0");
+  } else if (quantity == 2) {
+    printf("0 1");
+  } else {
+    printf("0 1 ");
+    for (int i = 3; i <= quantity; i++) {
+      printf("%d ", recursiveFibo(i));
+    }
+    
+  }
+  
+
+
+
 }
