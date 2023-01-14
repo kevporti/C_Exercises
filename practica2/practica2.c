@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <math.h>
 
 int main() {
 
-  exerciseTwo();
+  exerciseFour();
   
   return 0;
 }
@@ -11,7 +12,7 @@ int main() {
 // Ex 1: Write a program that asks for the result of launching a six-face dice and show the number in letters
 // of the opposite face of the result given. If the given value is not in the range of the dice, show a message.
 
-int exerciseOne() {
+void exerciseOne() {
   int number;
 
   printf("Por favor, ingrese el resultado obtenido de haber girado el dado: ");
@@ -40,8 +41,6 @@ int exerciseOne() {
     printf("Numero incorrecto. Para intentar nuevamente, re-ejecute el programa.");
     break;
   }
-
-  return 0;
 }
 
 // Ex 2: In the next table it's shown the number of beds of the bedrooms of a Cottage and the floor where it is.
@@ -52,7 +51,7 @@ int exerciseOne() {
 // 3. Shows the floor and the number of beds.
 // If the number is not asociated to any bedroom, show a message.
 
-int exerciseTwo() {
+void exerciseTwo() {
   int numberOfBedroom;
 
   printf("Habitaciones \n1. Azul \n2. Roja \n3. Verde \n4. Rosa \n5. Gris\n");
@@ -79,6 +78,66 @@ int exerciseTwo() {
   printf("Numero incorrecto. Este numero de habitacion no se encuentra en nuestras opciones.");
     break;
   }
+}
 
-  return 0;
+// Part 2: For Structure.
+// Ex 3: Calculate through For Loop the next sumatories:
+// 1. n=1 to 100, sumatory of (1/n).
+// 2. k=1 to 30, sumatory of (1/(k^2)).
+// 3. j=1 to 25, sumatory of (1/(j^j)).
+// 4. i=2 to 10, sumatory of ((i+1)*i).
+
+void exerciseThree() {
+  double result = 0, aux = 0;
+
+  // First sumatory.
+  for (double n = 1; n <= 100; n++) {
+    result += (1 / n);
+  }
+  printf("La primer sumatoria da %f\n", result);
+  result = 0;
+
+  // Second sumatory.
+  for (int k = 1; k <= 30; k++) {
+    aux = pow(k, 2);
+    result += (1 / aux);
+  }
+  printf("La segunda sumatoria da %f\n", result);
+  result = aux = 0;
+  
+  // Third sumatory.
+  for (int j = 1; j <= 25; j++) {
+    aux = pow(j, j);
+    result += (1 / aux);
+  }
+  printf("La tercera sumatoria da %f\n", result);
+  result = aux = 0;
+  
+  // Fourth sumatory.
+  for (int i = 2; i <= 10; i++) {
+    aux = i + 1;
+    result += (int)(aux * i);
+  }
+  printf("La cuarta sumatoria da %.2f", result);
+}
+
+// Ex 4: A tuple of three (a, b, c) of natural numbers is a Pythagoric tuple if (a^2 + b^2 = c^2).
+// Write a program that prints all the pythagoric tuple with a <= 20 and b <= 30.
+
+void exerciseFour() {
+
+  int a, b, c;
+  double aux;
+  for (a = 1; a <+ 20; a++) {
+    for (b = 1; b <+ 30; b++) {
+      // Calculating c.
+      aux = pow(a, 2) + pow(b, 2);
+      c = sqrt(aux);
+
+      // Filtering the non-natural numbers.
+      if (c == sqrt(aux)) {
+        printf("(%d, %d, %d)", a, b, c);
+      }
+    }
+  }
 }
