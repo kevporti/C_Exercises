@@ -3,7 +3,7 @@
 
 int main() {
 
-  exerciseFour();
+  exerciseSix();
   
   return 0;
 }
@@ -138,6 +138,27 @@ void exerciseFour() {
       if (c == sqrt(aux)) {
         printf("(%d, %d, %d)", a, b, c);
       }
+    }
+  }
+}
+
+// Ex 5: Write a program that contains a secret number between 0 and 500 which will be fixed (use #define for this).
+// The user should, through typing numbers, guess such value, ann in each try the program should respond "the number
+// is greater" or "the number is less" when appropriate. The user will have a max of 15 attempts.
+
+#define SECRET 521
+
+void exerciseFive() {
+  int numberOfUser;
+
+  printf("Existe un numero secreto entre el 0 y el 500, tu objetivo es adivinarlo. \nTienes 15 intentos.\n");
+  for (int i = 1; i <= 15; i++) {
+    printf("Intento numero %d: ", i);
+    scanf("%d", &numberOfUser);
+
+    if (numberOfUser == SECRET) {
+      printf("Has adivinado el numero secreto, Felicidades!");
+      i = 16;
     }
   }
 }
