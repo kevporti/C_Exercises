@@ -3,7 +3,7 @@
 
 int main() {
 
-  exerciseSix();
+  exerciseNine();
   
   return 0;
 }
@@ -142,13 +142,13 @@ void exerciseFour() {
   }
 }
 
-// Ex 5: Write a program that contains a secret number between 0 and 500 which will be fixed (use #define for this).
+// Ex 6: Write a program that contains a secret number between 0 and 500 which will be fixed (use #define for this).
 // The user should, through typing numbers, guess such value, ann in each try the program should respond "the number
 // is greater" or "the number is less" when appropriate. The user will have a max of 15 attempts.
 
 #define SECRET 521
 
-void exerciseFive() {
+void exerciseSix() {
   int numberOfUser;
 
   printf("Existe un numero secreto entre el 0 y el 500, tu objetivo es adivinarlo. \nTienes 15 intentos.\n");
@@ -161,4 +161,47 @@ void exerciseFive() {
       i = 16;
     }
   }
+}
+
+// Ex 8: Read a positive value and make the next sequence: If the number is even, divide it by 2; If the number is not even
+// multiply it by 3 and sum 1. Repeat until the value is 1, printing each value and how many operations were done . If the
+// value is less than 1, show a message with the word "ERROR".
+
+void exerciseEight() {
+  int number;
+
+  printf("Por favor, ingrese un valor mayor a uno: ");
+  scanf("%d", &number);
+
+  if (number < 1) {
+    printf("\nERROR. El valor ingresado es menor que uno.");
+  } else {
+    printf("\nEl valor inicial es: %d", number);
+    for (int i = 0; i >= 0; i++) {
+      if (number == 1) {
+        printf("\nValor final %d. Numero de pasos: %d", number, i);
+        i = -2;
+      } else if (number % 2 == 0) {
+        number /= 2;
+        printf("\nEl siguiente valor es: %d", number);
+      } else {
+        number = (number * 3) + 1;
+        printf("\nEl siguiente valor es: %d", number);
+      }
+    }
+  }
+}
+
+// Part 3: Arrays.
+// Ex 9: Write a program that completes an array with the first 100 integer numbers from 0, and shows them
+// in order ascendent.
+
+void exerciseNine() {
+  int array[100];
+
+  for (int i = 0; i <= 100; i++) {
+    array[i] = i;
+    printf("%d\n", array[i]);
+  }
+  
 }
