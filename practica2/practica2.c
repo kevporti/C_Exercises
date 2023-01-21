@@ -3,7 +3,7 @@
 
 int main() {
 
-  exerciseNine();
+  exerciseThirteen();
   
   return 0;
 }
@@ -204,4 +204,96 @@ void exerciseNine() {
     printf("%d\n", array[i]);
   }
   
+}
+
+// Ex 10: Write a program that completes an array with the even numbers that are between 100 and 200, and shows
+// then in order descendent.
+
+void exerciseTen() {
+  int arr[50];
+
+  for (int i = 200; i >= 100; i--) {
+    if (i % 2 == 0) {
+      arr[200 - i] = i;
+      printf("%d\n", arr[200 - i]);
+    }
+  }
+}
+
+// Ex 11: Write a program that completes an array with the first 50 multiples of 3, and shows them in order
+// descencent.
+
+void exerciseEleven() {
+  int arr[50], aux = 1;
+
+  for (int i = 50; i > 0; i--) {
+    
+    if (i % 3 == 0) {
+      arr[aux] = i;
+      printf("%d\n", arr[aux]);
+
+      aux++;
+    }
+  }
+}
+
+// Ex 12: Write a program that reads an array 'a' of 10 integers and an integer 'n', and prints the index
+// of the array 'a' where 'n' is (if is in the array), and -1 otherwise.
+
+void exerciseTwelve() {
+  int a[10], n;
+
+  // Asking for 'n'.
+  printf("Por favor, ingrese un numero cualquiera: ");
+  scanf("%d", &n);
+
+  // Asking for a number and inserting the rule into the array.
+  for (int i = 0; i < 10; i++) {
+    printf("Ahora ingrese un numero para el array: ");
+    scanf("%d", &a[i]);
+    if (a[i] == n) {
+      a[i] = i;
+    } else {
+      a[i] = -1;
+    }
+  }
+
+  // Printing the array.
+  for (int i = 0; i < 10; i++) {
+    printf("Indice array: %d\n", a[i]);
+  }
+}
+
+// Ex 13: Write a program that read an integer 'n' between 5 and 100, and then asks the user the insert of 'n'
+// numbers, save them into an array, and finally determine if the sum of all numbers in the array is greater
+// than 30. If the user inserts an 'n' number less than 5 or greater than 100, print an error and don't execute
+// the program.
+
+void exerciseThirteen() {
+  int n, sum = 0;
+
+  // Asking the 'n' int.
+  printf("Por favor, ingrese un numero entre 5 y 100: ");
+  scanf("%d", &n);
+  
+  if (n >= 5 && n <= 100) {
+    int a[n];
+
+    // Asking for the numbers.
+    for (int i = 0; i < n; i++) {
+      printf("Por favor, ingrese un numero: ");
+      scanf("%d", &a[i]);
+      sum += a[i];
+    }
+
+    // Givig feedback to the user.
+    if (sum > 30) {
+      printf("La suma de los numeros ingresados es mayor que 30!");
+    } else {
+      printf("La suma de los numeros ingresados NO es mayor que 30.");
+    }
+  // Error if number n < 5 or n > 100.
+  } else {
+    printf("ERROR. El numero ingresado no coincide con lo pedido.\nPor favor, intentelo nuevamente.");
+  }
 }
