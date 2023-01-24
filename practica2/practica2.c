@@ -3,7 +3,7 @@
 
 int main() {
 
-  exerciseThirteen();
+  exerciseFourteen();
   
   return 0;
 }
@@ -296,4 +296,35 @@ void exerciseThirteen() {
   } else {
     printf("ERROR. El numero ingresado no coincide con lo pedido.\nPor favor, intentelo nuevamente.");
   }
+}
+
+// Ex 14: Write a program that reads integers until it's inserted a negative number, and then print which
+// value between 0 and 99 was inserted more.
+
+void exerciseFourteen() {
+  int number = 0, aux = 0, auxId = 0;
+  int arr[100];
+
+  // Initializing the array to start counting the numbers.
+  for (int i = 0; i < 100; i++) {
+    arr[i] = 0;
+  }
+
+  // Asking the numbers until it's negative and keep the count in the array.
+  while (number >= 0) {
+    arr[number] += 1;
+    printf("Por favor, ingrese un numero: ");
+    scanf("%d", &number);
+  }
+
+  // Looking for the highest counted number.
+  for (int i = 0; i < 100; i++) {
+    if (arr[i] > aux) {
+      aux = arr[i];
+      auxId = i;
+    }
+  }
+
+  //Printing the result.
+  printf("Numero mas constado:\n%d: %d veces.\n", auxId, arr[auxId]);
 }
