@@ -3,7 +3,7 @@
 
 int main() {
 
-  exerciseFourteen();
+  exerciseEighteen();
   
   return 0;
 }
@@ -327,4 +327,56 @@ void exerciseFourteen() {
 
   //Printing the result.
   printf("Numero mas constado:\n%d: %d veces.\n", auxId, arr[auxId]);
+}
+
+// Ex 16: Write a function 'multAlt' that takes an array along with the lenght
+// of it, and returns the product of the elements in which their index is even.
+
+int multArr(int arr[], int lenghtOfArr) {
+  int mult = 1;
+
+  for (int i = 0; i < lenghtOfArr; i++) {
+    if (i % 2 == 0) {
+      mult *= arr[i];
+      printf("%d\n", mult);
+    }
+  }
+
+  return mult;
+}
+
+void exerciseSixteen() {
+  int result;
+  int array[5] = {5, 5, 5, 5, 5 };
+
+  result = multArr(array, 5);
+
+  printf("Resultado de la multiplicacion: %d", result);
+}
+
+// Part 4: Character String.
+// Ex 18: Write a function that gets a character string and a character, and
+// returns 0 if the character is in the string and 1 if not.
+
+int compareStringToArray(char arr[], char oneChar) {
+
+  // Loop until end of character string.
+  for (int i = 0; i < strlen(arr); i++) {
+    
+    // Checking character.
+    if (arr[i] == oneChar) {
+      return 0;
+    }
+  }
+
+  // If not coincidence found, return that info.
+  return 1;
+}
+
+void exerciseEighteen() {
+  int result;
+  char array[] = "Hola que tal", oneChar = 'y';
+
+  result = compareStringToArray(array, oneChar);
+  printf("%d", result);
 }
