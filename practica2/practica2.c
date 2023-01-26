@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 int main() {
 
-  exerciseEighteen();
+  exerciseTwenty();
   
   return 0;
 }
@@ -379,4 +380,55 @@ void exerciseEighteen() {
 
   result = compareStringToArray(array, oneChar);
   printf("%d", result);
+}
+
+// Ex 19: Write a function that gets a character string and a character, and
+// returns the amount of times the character appears in the string.
+
+int countChar(char arr[], char oneChar) {
+  int counter = 0;
+  printf("%d\n\n", oneChar);
+  for (int i = 0; i < 12; i++) {
+    printf("%c = %c\n", oneChar, arr[i]);
+    if (arr[i] == oneChar) {
+      counter += 1;
+    }
+  }
+  
+  return counter;
+}
+
+void exerciseNineteen() {
+  int result;
+  char array[12] = "Hola que tal";
+  char oneChar = 'a';
+
+  result = countChar(array, oneChar);
+  printf("%d", result);
+}
+
+// Ex 20: Write a program that read a character string and prints it in reverse.
+
+void exerciseTwenty() {
+  char array[1000], aux;
+
+  printf("Ingrese una cadena de caracteres: ");
+
+  for (int i = 0; i < 1000; i++) {
+    // Scanning all the characters.
+    scanf("%c", &aux);
+
+    // Filter when finishing the sentence.
+    if (aux != '\n') {
+      array[i] = aux;
+    } else {
+      break;
+    }
+  }
+  
+  // Printing the sentence.
+  for (int j = strlen(array); j >= 0; j--) {
+    printf("%c", array[j]);
+  }
+  
 }
