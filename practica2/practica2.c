@@ -4,7 +4,7 @@
 
 int main() {
 
-  exerciseTwenty();
+  exerciseTwentythree();
   
   return 0;
 }
@@ -431,4 +431,75 @@ void exerciseTwenty() {
     printf("%c", array[j]);
   }
   
+}
+
+// Ex 21: Write a function that takes a character string and determine if it's head-and-tail.
+
+int headAndTail(char arr[]) {
+  int i = 0, j = strlen(arr) - 1;
+  char reverseArr[strlen(arr)];
+  
+  while (i < strlen(arr)) {
+    reverseArr[j] = arr[i];
+    j--;
+    i++;
+  }
+
+  for (int k = 0; k < strlen(arr); k++) {
+    if (arr[k] != reverseArr[k]) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
+void exerciseTwentyone() {
+  int result;
+  char array[] = "Hola que tal";
+  result = headAndTail(array);
+
+  // Showing message.
+  if (result == 0) {
+    printf("La cadena de caracteres NO es capicua.");
+  } else {
+    printf("La cadena de caracteres es capicua.");
+  }
+}
+
+// Ex 23: Write a function that gets two character string and defines if one is inside the other.
+
+void exerciseTwentythree() {
+  int aux = 0, match = 0;
+  char arr1[] = "Hay un arbol en mi casa", arr2[] = "arboleda";
+
+  for (int i = 0; i < strlen(arr1); i++) {
+    if (arr1[i] == arr2[0]) {
+      for (int j = 0; j < strlen(arr2); j++) {
+        // Counting if the array matches.
+        if (arr1[i + j] == arr2[j]) {
+          aux += 1;
+        }
+      }
+
+      // Creating a match.
+      if (aux == strlen(arr2)) {
+        match = 1;
+
+        // Resetting the auxiliar variable.
+      } else {
+        aux = 0;
+      }
+
+      //Skipping the loop if a match was found.
+      if (match == 1) {
+        printf("Se ha encontrado la palabra/frase contenida en la primer frase.");
+        break;
+      }
+    }
+  }
+
+  // Showing message if nothing found.
+  if (match == 0) {
+    printf("NO se han encontrado coincidencias.");
+  }
 }
