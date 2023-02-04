@@ -1,12 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-int main(){
-    char *ptr = "hola mundo";
-    ptr[0] = 's';
-    printf("%s\n", ptr);
-  }
-
 // Memory Management.
 /* Which is the output of the following programs with pointers? Justify your answer.
 
@@ -213,5 +204,57 @@ For each of the following programs, choose the output that is suppossed to occur
   store addresses.
   I was wrong again but not too much. It was "Segmentation Fault" because the program is trying to insert the data of the string in a memory
   where should be stored an address. This error is very common and almost all errors ocurred when handling addresses are this.
+
+*/
+
+/*
+--------------------------------------------------------------------------------------------------------------------------------------
+Consider the following code and explain if the expressions are correct; If they are, give the value of them.
+
+15.
+  struct pack3 {
+    int a;
+  };
+
+  struct pack2 {
+    int b;
+    struct pack3 *next;
+  };
+
+  struct pack1 {
+    int c;
+    struct pack2 *next;
+  };
+
+  int main() {
+    struct pack1 data1, *dataPtr;
+    struct pack2 data2;
+    struct pack3 data3;
+    data1.c = 30;
+    data2.b = 20;
+    data3.a = 10;
+    dataPtr = &data1;
+    data1.next = &data2;
+    data2.next = &data3;
+    return 1;
+  }
+
+  Answer:
+
+    Expresion                |  Correcta          |   Valor
+    -------------------------+--------------------+-----------------
+    data1.c                  |  Si                | 30
+    dataPtr->c               |  Si                | 30
+    dataPtr.c                |  No                |
+    data1.next->b            |  Si                | 20
+    dataPtr-¿next->b         |  No                |
+    dataPtr.next.b           |  No                |
+    dataPtr->next.b          |  No                |
+    (*(dataPtr->next)).b     |  Si                | 20
+    data1.next->next->a      |  Si                | 10
+    dataPtr->next->next.a    |  No                |
+    dataPtr->next->next->a   |  Si                | 10
+    dataPtr->next->a         |  No                |
+    dataPtr->next->next->b   |  No                |
 
 */
