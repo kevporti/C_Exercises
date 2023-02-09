@@ -6,10 +6,10 @@
 int swap(int *x, int *y);
 int strlength(char *c);
 void strcopy(char *dest, char *src);
-void exerciseFive();
+void exerciseSeven();
 
 int main() {
-  exerciseFive();
+  exerciseSeven();
 
   return 0;
 }
@@ -125,13 +125,15 @@ Contacto* crearContacto() {
 
   // Asking for the name of the contact.
   printf("Por favor, ingrese el nombre del contacto: ");
-  scanf("%s", temp1);
+  scanf("%[^\n]", temp1);
+  getchar();
   createdContact->name = malloc(sizeof(char) * (strlen(temp1) + 1));
   strcpy(createdContact->name, temp1);
 
   // Asing for the phone number of the contact.
   printf("Por favor, ingrese el numero de telefono del contacto: ");
-  scanf("%s", temp2);
+  scanf("%[^\n]", temp2);
+  getchar();
   createdContact->phone = malloc(sizeof(char) * (strlen(temp2) + 1));
   strcpy(createdContact->phone, temp2);
 
@@ -145,5 +147,83 @@ void exerciseFive() {
   free(newContact->name);
   free(newContact->phone);
   free(newContact);
+}
 
+
+// Ex 6: Define a struct 'Agenda' that stores an array of structs 'Contacto', and an integer to count the
+// elements of the array. Define a function that adds a contact to the 'Agenda', and another to see the data
+// of all contacts.
+
+typedef struct {
+  Contacto *contacts;
+  int numberOfContacts;
+} Agenda;
+
+Agenda createAgenda() {
+  Agenda agenda;
+
+  // Setting initial parameters.
+  agenda.numberOfContacts = 0;
+  agenda.contacts = malloc(sizeof(Contacto));
+
+  return agenda;
+}
+
+void addContact(Agenda *agenda) {
+  Contacto *newContact;
+  newContact = crearContacto();
+
+  // Reallocating memory to add the new contact.
+  agenda->numberOfContacts += 1;
+  agenda->contacts = realloc(agenda->contacts, sizeof(Contacto) * (agenda->numberOfContacts + 1));
+  agenda->contacts[agenda->numberOfContacts] = *newContact;
+}
+
+void printAgenda(Agenda *agenda) {
+  printf("----AGENDA----\n");
+
+  for (int i = 1; i <= agenda->numberOfContacts; i++) {
+    printf("Contacto %d:\n  Nombre: %s, Numero: %s\n", i, agenda->contacts[i].name, agenda->contacts[i].phone);
+  }
+
+  printf("---- Fin AGENDA ----");
+}
+
+void exerciseSix() {
+  Agenda *agenda;
+  agenda = malloc(sizeof(Agenda));
+  *agenda = createAgenda();
+  addContact(agenda);
+  addContact(agenda);
+  printAgenda(agenda);
+
+  free(agenda->contacts);
+  free(agenda);
+}
+
+
+// Part 3: Files.
+
+// Ex 7: Define a function with the following signature: void filecopy(FILE *ifp, FILE *ofp) that copies the contents of
+// the 'ifp' file into the 'ofp' file.
+
+void filecopy(FILE *ifp, FILE *ofp) {
+  char line[1024];
+
+  ifp = fopen("../text.txt", "r");
+  ofp = fopen("../text2.txt", "w");
+
+  while (fscanf(ifp, "%[^\n]", line) != EOF) {
+    fprintf(ofp, "%s\n", line);
+    fgetc(ifp);
+  }
+
+  fclose(ifp);
+  fclose(ofp);
+}
+
+void exerciseSeven() {
+  FILE *ifp, *ofp;
+  
+  filecopy(ifp, ofp);
 }
