@@ -6,10 +6,10 @@
 int swap(int *x, int *y);
 int strlength(char *c);
 void strcopy(char *dest, char *src);
-void exerciseSeven();
+void exerciseEight();
 
 int main() {
-  exerciseSeven();
+  exerciseEight();
 
   return 0;
 }
@@ -226,4 +226,57 @@ void exerciseSeven() {
   FILE *ifp, *ofp;
   
   filecopy(ifp, ofp);
+}
+
+
+// Ex 8: Define a function that, given the name of a file as argument, opens the file, counts the number of lines
+// creates a vector of strings, and then stores the lines in the vector.
+
+void storeLineInVector(char *line, char ***vector, int numberOfLines) {
+  // If its the start of the file, creates dynamic memory.
+    if (numberOfLines == 0) {
+      *vector = malloc(sizeof(char *));
+    } else {
+      // Reallocation of the dynamic memory to store more lines.
+      *vector = realloc(*vector, (sizeof(char *) * (numberOfLines + 1)));
+    }
+    // Appends the line to the vector.
+    (*vector)[numberOfLines] = line;
+}
+
+char** linesOfFile(char *fileName, int *numberOfLines) {
+  char lineTemp[1024], **vector;
+  FILE *file;
+  file = fopen(fileName,"r");
+
+  if (file == NULL) {
+    printf("Error opening file\n");
+  }
+  
+  while (fscanf(file, "%[^\n]", lineTemp) != EOF) {
+    char *line;
+
+    line = malloc(strlen(lineTemp) + 1);
+    strcpy(line, lineTemp);
+
+    storeLineInVector(line, &vector, *numberOfLines);
+
+    (*numberOfLines)++;
+    fgetc(file);
+  }
+
+  fclose(file);
+  
+  return vector;
+  
+}
+
+void exerciseEight() {
+  int numberOfLines = 0;
+  char fileName[] = "text3.txt", **vector;
+  vector = linesOfFile(fileName, &numberOfLines);
+  for (int i = 0; i < numberOfLines; i++) {
+    printf("%s\n", vector[i]);
+  }
+  
 }
